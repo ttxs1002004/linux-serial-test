@@ -410,7 +410,7 @@ static void setup_serial_port(int baud)
 {
 	struct termios newtio;
 	struct serial_rs485 rs485;
-
+	printf("The Port will be opened is : %s\r\n",_cl_port);
 	_fd = open(_cl_port, O_RDWR | O_NONBLOCK);
 
 	if (_fd < 0) {
@@ -508,6 +508,7 @@ int main(int argc, char * argv[])
 
 	if (_cl_baud)
 		baud = get_baud(_cl_baud);
+	printf("bandrate is: %i\r\n",_cl_baud);
 
 	if (baud <= 0) {
 		printf("NOTE: non standard baud rate, trying custom divisor\n");
